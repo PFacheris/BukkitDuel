@@ -82,6 +82,19 @@ public class DuelMgr {
 		return duelsWithParticipant;
 	}
 
+	public Duel getActiveDuelByPlayer(Player participant)
+	{
+		for(Duel d : duels)
+		{
+			if ((d.getChallengee().equals(participant) || d.getInitiator().equals(participant)) && d.getIsActive())
+			{
+				return d;
+			}
+		}
+
+		return null;
+	}
+	
 	public boolean isPlayerInActiveDuel(Player participant)
 	{
 		for(Duel d : duels)

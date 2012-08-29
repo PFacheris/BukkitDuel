@@ -51,6 +51,10 @@ implements CommandExecutor
 				{
 					performRejectCommand(sender,args);
 				}
+				if (args[0].equals("quit"))
+				{
+					performQuitCommand(sender,args);
+				}
 				if (args[0].equals("arenas"))
 				{
 					performArenaCommand(sender,args);
@@ -520,6 +524,24 @@ implements CommandExecutor
 		return false;
 	}
 
+	private boolean performQuitCommand(CommandSender sender, String[] args)
+	{
+		if (BukkitDuel.duelManager.isPlayerInActiveDuel((Player)sender))
+		{
+			Duel tempDuel = BukkitDuel.duelManager.getActiveDuelByPlayer((Player)sender);
+			if(((Player)sender).equals(tempDuel.getInitiator()))
+			{
+				BukkitDuel.duelManager.endDuel(tempDuel,false);
+			}
+			else
+			{
+				BukkitDuel.duelManager.endDuel(tempDuel,true);
+			}
+			return true;
+		}
+		sender.sendMessage("[BukkitDuel] You are not currently in a duel.");
+		return false;
+	}
 	private boolean performStakesCommand(CommandSender sender, String[] args)
 	{
 		if (args.length >= 2)
