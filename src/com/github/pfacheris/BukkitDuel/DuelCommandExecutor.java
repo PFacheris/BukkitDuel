@@ -214,8 +214,8 @@ implements CommandExecutor
 						{
 							if(!tempDuel.getArena().getInUse())
 							{
-								tempDuel.getChallengee().sendMessage(ChatColor.BOLD.toString() + ChatColor.GREEN + "Duel with " + tempDuel.getInitiator().getName() + " accepted.\nYou will be teleported to the arena in 10 seconds.");			
-								tempDuel.getInitiator().sendMessage(ChatColor.BOLD.toString() + ChatColor.GREEN + "Duel with " + tempDuel.getChallengee().getName() + " accepted.\nYou will be teleported to the arena in 10 seconds.");
+								tempDuel.getChallengee().sendMessage(ChatColor.GREEN + "Duel with " + tempDuel.getInitiator().getName() + " accepted.\nYou will be teleported to the arena in 10 seconds.");			
+								tempDuel.getInitiator().sendMessage(ChatColor.GREEN + "Duel with " + tempDuel.getChallengee().getName() + " accepted.\nYou will be teleported to the arena in 10 seconds.");
 
 								plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 
@@ -234,8 +234,8 @@ implements CommandExecutor
 							if (BukkitDuel.arenaManager.getArenasByUsed(false).size() >= 1)
 							{
 								tempDuel.setArena(BukkitDuel.arenaManager.getArenasByUsed(false).get(0));
-								tempDuel.getInitiator().sendMessage("Arena found! Duel beginning in 10 seconds.");
-								sender.sendMessage("Arena found! Duel beginning in 10 seconds.");
+								tempDuel.getInitiator().sendMessage(ChatColor.GREEN + "Arena found! Duel beginning in 10 seconds.");
+								sender.sendMessage(ChatColor.GREEN + "Arena found! Duel beginning in 10 seconds.");
 
 								plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 

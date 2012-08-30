@@ -22,7 +22,15 @@ public class ArenaMgr {
 
 	private void populateArenas()
 	{
-		Set<String> arenaNames = plugin.getConfig().getConfigurationSection("Arenas").getKeys(false);
+		Set<String> arenaNames = null;
+		try
+		{
+			arenaNames = plugin.getConfig().getConfigurationSection("Arenas").getKeys(false);
+		}
+		catch(Exception e)
+		{
+			BukkitDuel.log.info("[BukkitDuel] No arenas found, be sure to define one in game.");
+		}
 
 		if (arenaNames != null && arenaNames.size() > 0)
 		{
@@ -58,7 +66,7 @@ public class ArenaMgr {
 					}
 					catch (Exception e)
 					{
-						BukkitDuel.log.info("Configuration could not be loaded for arena: " + name);
+						BukkitDuel.log.info("[BukkitDuel] Configuration could not be loaded for arena: " + name);
 					}
 				}
 			}
